@@ -7,6 +7,8 @@ import {
   Param,
   Body,
   NotFoundException,
+  Query,
+  ParseIntPipe,
 } from '@nestjs/common';
 
 import { UsersService } from './users.service';
@@ -17,10 +19,12 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
-  async findAll(): Promise<User[]> {
-    return this.usersService.findAll();
+  async findAll(
+    @Query('page', ParseIntPipe) page = 1,
+    @Query('limit', ParseIntPipe) limit = 20,
+  ): Promise<{ meta: any; data: User[] }> {
+    return this.usersService.findAll(page, limit);
   }
-
   @Get(':id')
   async findOne(@Param('id') id: number): Promise<User | null> {
     const user = await this.usersService.findOne(id);

@@ -1,15 +1,17 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './user.entity';
-import { UsersModule } from './users.module';
-import { UserSeeder } from './user.seeder';
+import {User} from "./user/user.entity";
+import {UserSeeder} from "./user/user.seeder";
+import {UserModule} from "./user/user.module";
+
+
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
-      port: 3306,
+      port: 8889,
       username: 'root',
       password: 'root',
       database: 'calisma',
@@ -17,7 +19,7 @@ import { UserSeeder } from './user.seeder';
       synchronize: true,
     }),
     TypeOrmModule.forFeature([User]),
-    UsersModule,
+    UserModule,
   ],
   providers: [UserSeeder],
 })

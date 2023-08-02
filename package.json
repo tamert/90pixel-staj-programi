@@ -18,17 +18,22 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "seed": "node dist/seeder",
+    "seed:refresh": "node dist/seeder --refresh"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
+    "@nestjs/config": "^3.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/mongoose": "^10.0.1",
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/typeorm": "^10.0.0",
+    "dotenv": "^16.3.1",
     "faker": "^6.6.6",
     "mongoose": "^7.4.0",
     "mysql2": "^3.5.2",
+    "nest-commander": "^3.11.0",
     "nestjs-seeder": "^0.3.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",

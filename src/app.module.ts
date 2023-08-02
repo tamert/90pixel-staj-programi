@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import {UserModule} from "./user/user.module";
-import {ConfigModule} from "@nestjs/config";
+import { UserModule } from './user/user.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: '.env',
-      isGlobal: true
+      isGlobal: true,
     }),
     TypeOrmModule.forRoot({
       database: process.env.DATABASE_DBNAME,
@@ -19,7 +19,7 @@ import {ConfigModule} from "@nestjs/config";
       type: 'mysql',
       username: process.env.DATABASE_USERNAME,
     }),
-    UserModule
+    UserModule,
   ],
 })
 export class AppModule {}
